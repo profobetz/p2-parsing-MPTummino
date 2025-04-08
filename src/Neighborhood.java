@@ -48,7 +48,7 @@ public class Neighborhood
         return open;
     }
 
-    public double averageDaysOpen()
+    public double getAverageDaysOpen()
     {
         double totalDays = 0;
 
@@ -63,5 +63,18 @@ public class Neighborhood
     public String getName()
     {
         return name;
+    }
+
+    public int getTotalRequestCount()
+    {
+        return requests.size();
+    }
+
+    public double getOverdueRate()
+    {
+        double totalRequests = getTotalRequestCount();
+        double overdueRequests = getOverdueCases();
+
+        return (overdueRequests/totalRequests)*100;
     }
 }

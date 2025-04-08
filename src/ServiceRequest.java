@@ -7,10 +7,11 @@ public class ServiceRequest
     private LocalDate openDate;
     private LocalDate closedDate;
     private boolean overdue;
+    private boolean open;
     private String reason;
     private String neighborhood;
 
-    public ServiceRequest(String openDate, String closedDate, boolean overdue, String reason, String neighborhood)
+    public ServiceRequest(String openDate, String closedDate, boolean overdue, boolean open, String reason, String neighborhood)
     {
         try
         {
@@ -29,6 +30,7 @@ public class ServiceRequest
             this.closedDate = null;
         }
         this.overdue = overdue;
+        this.open = open;
         this.reason = reason;
         this.neighborhood = neighborhood;
     }
@@ -39,7 +41,7 @@ public class ServiceRequest
         {
             return 0;
         }
-        else if( closedDate == null)
+        else if( open )
         {
             return (int) openDate.until(LocalDate.now(), ChronoUnit.DAYS);
         }
@@ -62,6 +64,11 @@ public class ServiceRequest
     public boolean isOverdue() 
     {
         return overdue;
+    }
+
+    public boolean isOpen()
+    {
+        return open;
     }
 
     public String getReason() 
